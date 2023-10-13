@@ -1,5 +1,64 @@
-<h1>Hi <%= name %></h1>
-<form action="/logout" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <button type="submit">Log out</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+        <link href="/stylesheets/index.css" rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="userFullData">
+                <div class="userWelcome">
+                    <div class="welcomeText">
+                        <h1>Welcome</h1>
+                        <div class="userName">
+                            <% if (typeof Name !== 'undefined' || typeof surName !== 'undefined') { %>
+                                <h3><%= Name %> <%= surName %></h3>
+                            <%  } else { %>
+                                <h1>Guest</h1>
+                            <%  } %>
+                        </div>
+                    </div>
+                    <img class="image" id="profilePicture" src="<%= imageLink %>" alt="Profile Picture">
+                </div>
+                <div class="seperator"></div>
+                <div class="userInfo">
+                    <div class="userInfoText">
+                        <h1>User Info!</h1>
+                    </div>
+                    <div class="userInfoAll">
+                        <div>
+                            <p class="text">Name: <%= Name %> </p>
+                        </div>
+                        <div>
+                            <p class="text">Surname: <%= surName %> </p>
+                        </div>
+                        <div>
+                            <p class="text">Adress: <%= Adress %> </p>
+                        </div>
+                        <div>
+                            <p class="text">Postal Code: <%= PostalCode %> </p>
+                        </div>
+                        <div>
+                            <p class="text">City: <%= City %> </p>
+                        </div>
+                        <div>
+                            <p class="text">Country: <%= Country %> </p>
+                        </div>
+                        <div>
+                            <p class="text">Email: <%= Email %> </p>
+                        </div>
+                        <div>
+                            <p class="text">Username: <%= Username %> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="/logout" method="get">
+                <button class="btn" type="submit">Log out</button>
+            </form>
+        </div>
+    </body>
+</html>

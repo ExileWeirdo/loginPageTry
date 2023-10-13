@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: url('/images/img.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1em;
+    overflow-y: hidden;
+}
+
+.wrapper {
+    position: relative;
+    width: 675px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    z-index: 1;
+}
+
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .inputBox{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    z-index: 0;
+}
+
+.inputBox input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.inputBox input::placeholder{
+    color: #fff;
+}
+
+.inputBox i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.wrapper .loginLink{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.loginLink p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginLink p a:hover {
+    text-decoration: underline;
+}
+
+.errorMessage{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    color: #C83f49;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    background: transparent;
+    font-size: 1rem;
+    color: #fff;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out 0s;
+    opacity: 0;
+    width: 100%;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+.message {
+    display: flex;
+    justify-content: center !important;
+    flex-direction: column;
+}
+
+#message.active {
+    opacity: 1;
+    max-height: 1000px; 
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 13px;
+}
+
+#message h3 {
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+.dropdown{
+    min-width: 15em;
+    position: relative;
+    margin: 30px 0;
+}
+
+.dropdown * {
+    box-sizing: border-box;
+}
+
+.select {
+    background: transparent;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50px;
+    padding: 1em;
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.select-clicked {
+    border: 2px solid #26489a;
+    box-shadow: 0 0 0.8em #26489a;
+}
+
+.select:hover {
+    background: #323741;
+}
+
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid #fff;
+    transition: 0.3s;
+    margin-right: 5.5px;
+}
+
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px solid #363a43;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 4em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background: #2a2d35;
+}
+
+.active {
+    background: #23242a
+}
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+
+.userFullData {
+    display: flex;
+    justify-content: space-between;
+}
+
+.seperator {
+    width: 3px;
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 0.5em 5em rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    height: 90%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+@media only screen and (max-width: 700px){
+    .userFullData {
+        flex-direction: column;
+    }
+
+    .seperator {
+        width: 90%;
+        height: 3px;
+        margin-left: 5%;
+    }
+
+    .userData{
+        padding: 1em;
+        border: 2px solid rgba(255, 255, 255, .2);
+        border-radius: 25px;
+        margin-bottom: 2rem;
+    }
+    
+    .inputBox.inputBoxCountry{
+        margin-bottom: 0;
+    }
+
+    .inputBox.inputBoxAdress{
+        margin-top: 0;
+    }
+
+    .inputBox.inputBoxName{
+        margin-top: 0;
+    }
+
+    .dropdown{
+        margin-bottom: 0;
+    }
+
+    .userLogin{
+        padding: 1em;
+        border: 2px solid rgba(255, 255, 255, .2);
+        border-radius: 25px;
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: url('/images/img.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    max-width: 900px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper h3{
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    color: #000;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, .2);
+    margin-top: 10px;
+}
+
+.image {
+    width: 330px;
+    height: 250px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    margin-bottom: 1rem;
+}
+
+.seperator {
+    width: 3px;
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 0.5em 5em rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    height: 90%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.userFullData {
+    display: flex;
+    gap: 3rem;
+}
+
+.userInfoText {
+    height: 94px;
+    display: flex;
+    align-items: center;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfoAll{
+    width: 110%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 950px){
+
+    body {
+        padding: 1em;
+    }
+
+    .wrapper {
+        padding: 0.5em 1em;
+    }
+
+    .userFullData{
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .seperator{
+        width: 90%;
+        width: auto;
+        height: 3px;
+        margin: 0;
+    }
+
+    .userInfo{
+        padding: 0.5em;
+    }
+
+    .userInfoText {
+        justify-content: center;
+        height: auto;
+    }
+
+    .btn {
+        margin-bottom: 1rem;
+    }
+
+}

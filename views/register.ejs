@@ -1,17 +1,211 @@
-<h1>Register</h1>
-<form action="/register" method="POST">
-  <div>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
-  </div>
-  <div>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-  </div>
-  <button type="submit">Register</button>
-</form>
-<a href="/login">Login</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/stylesheets/register.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="wrapper" id="page">
+      <h1>Register</h1>
+      <div class="errorMessage">
+        <% if (typeof error !== 'undefined') { %>
+          <p class="error"><%= error %></p>
+        <% } %>
+      </div>
+      <form id="registerForm"  action="/register" method="POST">
+        <div class="userFullData">
+          <div class="userLogin">
+            <div class="inputBox inputBoxName">
+              <input type="text" id="name" name="name" placeholder="Name" required>
+              <i class="bx bxs-notepad"></i>
+            </div>
+            <div class="inputBox inputBoxSurName">
+              <input type="text" id="surname" name="surname" placeholder="Surname" required>
+              <i class="bx bxs-notepad"></i>
+            </div>
+            <div class="inputBox inputBoxUsername">
+              <input type="text" id="username" name="username" placeholder="Username" required>
+              <i class="bx bxs-user"></i>
+            </div>
+            <div class="inputBox inputBoxPassword" id="inputBoxPassword">
+              <input onfocus="onFocusInput()" onblur="onBlurInput()" type="password" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+              <i class="bx bxs-lock-alt"></i>
+          </div>
+            <div class="dropdown">
+              <div class="select">
+                <span class="selected">Profile Picture</span>
+                <div class="caret"></div>
+              </div>
+              <ul class="menu">
+                <li class="active">Cat</li>
+                <li>Dog</li>
+                <li>Monkey</li>
+                <li>Bunny</li>
+                <li>Rhino</li>
+                <li>Eagle</li>
+              </ul>
+            </div>
+          </div>
+          <div class="seperator"></div>
+          <div class="userData">
+            <div class="inputBox inputBoxAdress">
+              <input type="text" id="adress" name="adress" placeholder="Adress" required>
+              <i class="bx bx-current-location"></i>
+            </div>
+            <div class="inputBox inputBoxPostalCode">
+              <input type="number" id="postalCode" name="postalCode" placeholder="Postal Code" min="500" max="100000" required>
+              <i class="bx bxs-map-pin"></i>
+            </div>
+            <div class="inputBox inputBoxCity">
+              <input type="text" id="city" name="city" placeholder="City" required>
+              <i class="bx bxs-buildings"></i>
+            </div>
+            <div class="inputBox inputBoxEmail">
+              <input type="email" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+              <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="inputBox inputBoxCountry">
+              <input type="text" id="country" name="country" placeholder="Country" required>
+              <i class="bx bxs-flag"></i>
+            </div>
+          </div>
+        </div>
+        <button class="btn" type="submit">Register</button>
+      </form>
+      <div class="loginLink">
+        <p>Already have an account? <a href="/login">Login</a></p>
+      </div>
+      <div class="message" id="message">
+        <div><h3>Password must contain:</h3></div>
+        <div><p id="letter" class="invalid">A lowercase letter</p></div>
+        <div><p id="capital" class="invalid">A capital (uppercase) letter</p></div>
+        <div><p id="number" class="invalid">A number</p></div>
+        <div><p id="length" class="invalid">Minimum 8 characters></p></div>
+      </div>
+    </div>
+    <script>
+      const myInput = document.getElementById("password")
+      const letter = document.getElementById("letter")
+      const capital = document.getElementById("capital")
+      const number = document.getElementById("number")
+      const length = document.getElementById("length")
+      const page = document.getElementById("page")
+      const messagePassword = document.getElementById("message")
+      const myInputPasswordBox = document.getElementById("inputBoxPassword")
+
+      // When the user clicks on the password field, show the message box
+      function onFocusInput () {
+        const message = document.getElementById("message")
+        message.classList.add('active')
+      }
+
+      function onBlurInput () {
+        const message = document.getElementById("message")
+        message.classList.remove('active')
+      }
+
+      myInput.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+      // Validate capital letters
+      const upperCaseLetters = /[A-Z]/g;
+      if(myInput.value.match(upperCaseLetters)) {
+          capital.classList.remove("invalid");
+          capital.classList.add("valid");
+      } else {
+          capital.classList.remove("valid");
+          capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      const numbers = /[0-9]/g;
+      if(myInput.value.match(numbers)) {
+          number.classList.remove("invalid");
+          number.classList.add("valid");
+      } else {
+          number.classList.remove("valid");
+          number.classList.add("invalid");
+      }
+
+      // Validate length
+      if(myInput.value.length >= 8) {
+          length.classList.remove("invalid");
+          length.classList.add("valid");
+      } else {
+          length.classList.remove("valid");
+          length.classList.add("invalid");
+      }
+      }
+
+      const dropdowns = document.querySelectorAll('.dropdown')
+
+      function closeAllDropdowns() {
+        dropdowns.forEach(dropdown => {
+          const select = dropdown.querySelector('.select');
+          const caret = dropdown.querySelector('.caret');
+          const menu = dropdown.querySelector('.menu');
+
+          select.classList.remove('select-clicked')
+          caret.classList.remove('caret-rotate')
+          menu.classList.remove('menu-open')
+        })
+      }
+
+      document.addEventListener('click', (e) => {
+        const clickedDropdown = e.target.closest('.dropdown')
+
+        if (!clickedDropdown) {
+          closeAllDropdowns()
+        }
+      })
+
+      dropdowns.forEach(dropdown => {
+          const select = dropdown.querySelector('.select');
+          const caret = dropdown.querySelector('.caret');
+          const menu = dropdown.querySelector('.menu');
+          const options = dropdown.querySelectorAll('.menu li');
+          const selected = dropdown.querySelector('.selected');
+
+          // click event to toggle the dropdown
+          select.addEventListener('click', (e) => {
+            e.stopPropagation()
+            closeAllDropdowns()
+            select.classList.toggle('select-clicked');
+            caret.classList.toggle('caret-rotate');
+            menu.classList.toggle('menu-open');
+          });
+
+          options.forEach(option => {
+              // click event for each option
+              option.addEventListener('click', () => {
+                  selected.innerText = option.innerText;
+                  closeAllDropdowns()
+              });
+          });
+      });
+
+      const registerButton = document.querySelector('.btn')
+
+      registerButton.addEventListener('click', function (event) {;
+        const selectedTextElement = document.querySelector('.selected');
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'selectedText';
+        hiddenInput.value = selectedTextElement.textContent;
+
+        const registerForm = document.getElementById('registerForm')
+        registerForm.appendChild(hiddenInput);
+      })
+    </script>
+  </body>
+</html>
