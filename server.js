@@ -21,7 +21,7 @@ app.use(
   }),
 );
 
-app.get("/", isAuthenticated, (req, res) => {
+app.get('/', isAuthenticated, (req, res) => {
   res.render("index.ejs");
 });
 
