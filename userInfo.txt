@@ -1,5 +1,0 @@
-Noah;Strandberg;ExileWeirdo;$2b$10$IkEJZdOOB1cWVRr490KB/uEFYltnzx6J0ofKpkszNUgYiNcqb0TtW;Musikgatan 27g;/images/rhinoImagePic.jpg;37147;Karlskrona;shadowhunterswe@gmail.com;Sweden
-Noah;Strandberg;gje06;$2b$10$0vwSP3xNefOG2gX8FTLDCeF04oM4KAAsGWVSNvmf2cE7yBZxvm1hO;Musikgatan 27g;/images/monkeyImagePic.jpg;37147;Karlskrona;shadowhunterswe@gmail.com;Sweden
-Olof;Palme;OlofPalme2;$2b$10$c8fw8D85QLj36pM5WszAjOgHmkHd.7M7zSsuTUXQ5TnhSFs1zsK.e;OlofPalemgatan 27;/images/eagleImagePic.jpg;37199;Karlskrona;OlofPalme2@gmail.com;Sweden
-Matteus;Pabwloski;matteus123;$2b$10$WQNtuBQ8aaWyvTOQCt/X1eButjsDbjSDwsa414T0tLeo1Jhvad7vK;Rödebyvägen 19;/images/catImagePic.jpg;37149;Karlskrona;matteusisgay@gmail.com;Sweden
-ADAD;ADADAD;123123;$2b$10$hwCxY8KHB1834fZZ3ZvzFuWFKGyIXMJPgDFrDchWUhfAWfOP4SliO;Musikgatan 27g;/images/monkeyImagePic.jpg;37147;Karlskrona;shadowhunterswe@gmail.com;Sweden
