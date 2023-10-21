@@ -39,13 +39,13 @@
                 <span class="selected">Profile Picture</span>
                 <div class="caret"></div>
               </div>
-              <ul class="menu">
-                <li class="active">Cat</li>
-                <li>Dog</li>
-                <li>Monkey</li>
-                <li>Bunny</li>
-                <li>Rhino</li>
-                <li>Eagle</li>
+              <ul class="menu" id="myList">
+                <li class="cat">Cat <img class="imageCat" src="/images/catImagePic.jpg"></li>
+                <li class="dog">Dog <img class="imageDog" src="/images/dogImagePic.jpg"></li>
+                <li class="monkey">Monkey <img class="imageMonkey" src="/images/monkeyImagePic.jpg"></li>
+                <li class="bunny">Bunny <img class="imageBunny" src="/images/bunnyImagePic.jpg"></li>
+                <li class="rhino">Rhino <img class="imageRhino" src="/images/rhinoImagePic.jpg"></li>
+                <li class="eagle">Eagle <img class="imageEagle" src="/images/eagleImagePic.jpg"></li>
               </ul>
             </div>
           </div>
@@ -154,6 +154,7 @@
           const select = dropdown.querySelector('.select');
           const caret = dropdown.querySelector('.caret');
           const menu = dropdown.querySelector('.menu');
+          const options = dropdown.querySelectorAll('.menu li');
 
           select.classList.remove('select-clicked')
           caret.classList.remove('caret-rotate')
@@ -175,6 +176,7 @@
           const menu = dropdown.querySelector('.menu');
           const options = dropdown.querySelectorAll('.menu li');
           const selected = dropdown.querySelector('.selected');
+          const active = dropdown.getElementsByClassName('active');
 
           // click event to toggle the dropdown
           select.addEventListener('click', (e) => {
@@ -186,13 +188,11 @@
           });
 
           options.forEach(option => {
-              // click event for each option
-              option.addEventListener('click', () => {
+            option.addEventListener('click', () => {
                   selected.innerText = option.innerText;
                   closeAllDropdowns()
               });
-          });
-      });
+          })
 
       const registerButton = document.querySelector('.btn')
 
@@ -206,6 +206,20 @@
         const registerForm = document.getElementById('registerForm')
         registerForm.appendChild(hiddenInput);
       })
+      })
+
+
+
+
+    </script>
+    <script src=
+      "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script>
+      $( "li" ).click(function() {
+        $('#myList li').removeClass('active');
+        $(this).addClass( "active" );
+      });
     </script>
   </body>
 </html>
