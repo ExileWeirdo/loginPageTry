@@ -8,7 +8,6 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const session = require("express-session");
 const mongoose = require('mongoose');
-const { error } = require("console");
 
 
 mongoose.connect(process.env.MONGODB_URI, {
