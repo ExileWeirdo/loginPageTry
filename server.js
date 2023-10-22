@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 app.set("view engine", "ejs");
+app.set('views', __dirname)
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,11 +30,11 @@ app.use(
 );
 
 app.get('/', isAuthenticated,  (req, res) => {
-  res.render("index.ejs");
+  res.render("index");
 });
 
 app.get("/login", (req, res) => {
-  res.render("login.ejs");
+  res.render("login");
 });
 
 app.post("/login", async (req, res) => {
@@ -54,20 +55,20 @@ app.post("/login", async (req, res) => {
       const City = authenticatedUser.city
       const Country = authenticatedUser.country
       const Adress = authenticatedUser.adress
-      res.render('index.ejs', { Name, surName, Username, imageLink, Email, PostalCode, City, Country, Adress } )
+      res.render('index', { Name, surName, Username, imageLink, Email, PostalCode, City, Country, Adress } )
     }
   } catch (err) {
     console.log(err)
 
     if (err.message === 'User not found.'){
       const errorMessage = 'User not found.'
-      res.render('login.ejs', { error: errorMessage })
+      res.render('login', { error: errorMessage })
     } else if (err.message === 'Incorrect password.'){
       const errorMessage = 'Incorrect password.'
-      res.render('login.ejs', { error: errorMessage })
+      res.render('login', { error: errorMessage })
     } else {
       const errorMessage = 'An error occured'
-      res.render('login.ejs', { error: errorMessage })
+      res.render('login', { error: errorMessage })
     }
   }
 });
@@ -91,7 +92,7 @@ async function authenticateUser(username, password) {
 
 
 app.get("/register", (req, res) => {
-  res.render("register.ejs");
+  res.render("register");
 });
 
 app.post("/register", async (req, res) => {
@@ -103,7 +104,7 @@ app.post("/register", async (req, res) => {
 
     if (req.body.selectedText === "Profile Picture") {
       const errorMessage = "Please pick a Profile Picture.";
-      return res.status(401).render("register.ejs", { error: errorMessage });
+      return res.status(401).render("register", { error: errorMessage });
     }
 
     const selectedProfileText = req.body.selectedText;
@@ -127,7 +128,7 @@ app.post("/register", async (req, res) => {
    .then((existingUser) => {
     if (existingUser) {
       const errorMessage = "Username already taken";
-      return res.render("register.ejs", { error: errorMessage });
+      return res.render("register", { error: errorMessage });
     }
 
     const newUser = new User({
@@ -144,11 +145,11 @@ app.post("/register", async (req, res) => {
     })
 
     newUser.save()
-    return res.render('login.ejs')
+    return res.render('login')
    })
    .catch((err) => {
     console.error(err)
-    return res.status(500).render('register.ejs', { error: 'Error while checking username availability'})
+    return res.status(500).render('register', { error: 'Error while checking username availability'})
    })
 });
 
